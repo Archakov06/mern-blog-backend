@@ -11,7 +11,7 @@ import { handleValidationErrors, checkAuth } from './utils/index.js';
 import { UserController, PostController } from './controllers/index.js';
 
 mongoose
-  .connect(process.ENV.MONGO_URI)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('DB ok'))
   .catch((err) => console.log('DB error', err));
 
@@ -57,7 +57,7 @@ app.patch(
   PostController.update,
 );
 
-app.listen(process.env.PORT, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
   if (err) {
     return console.log(err);
   }
